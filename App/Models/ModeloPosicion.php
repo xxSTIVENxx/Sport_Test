@@ -7,6 +7,7 @@ use PDO;
 
 class ModeloPosicion {
 
+    //MODELO PARA OBTENER LAS POSICIONES 
     public function obtenerPosicion() {
         $tabla = "posiciones";
         

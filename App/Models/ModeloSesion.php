@@ -9,7 +9,7 @@ use PDOException;
 
 class ModeloSesion {
 
-    // MODELO CREAR 
+    // MODELO CREAR USAURIO (PROFESOR)
 
     static public function mdlRegisUsuario($tabla, $datos) {
         
@@ -19,7 +19,7 @@ class ModeloSesion {
             $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre_completo, correo_electronico, contrasena, edad, fk_id_deporte, fk_id_usuario) 
                 VALUES (:nombre_completo, :correo_electronico, :contrasena, :edad, :fk_id_deporte, :fk_id_usuario)");
         
-            // Bind parameters here...
+            //PARAMETROS.
             $stmt->bindParam(":nombre_completo", $datos["nombre_completo"], PDO::PARAM_STR);
             $stmt->bindParam(":correo_electronico", $datos["correo_electronico"], PDO::PARAM_STR);
             $stmt->bindParam(":contrasena", $datos["contrasena"], PDO::PARAM_STR);
@@ -29,7 +29,7 @@ class ModeloSesion {
 
 
 
-            //INCRIPTAR 
+            //INCRIPTAMOS LA CONTRASEÑA
             $contrasenaUsuario = $datos["contrasena"];
 
             // Genera un hash de contraseña seguro
@@ -67,17 +67,11 @@ class ModeloSesion {
             </script>';
         }
     }
-
-
-    // En tu modelo ModeloRegistroUsuario.php
-
     
 
-    // MODELO MOSTRAR
+    // MODELO MOSTRAR O SELECCIONAR
 
     static public function mdlSeleccionarUsuario($tabla, $item, $valor) {
-
-        
         
         if ($item == null && $valor == null) {
             $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
@@ -90,8 +84,7 @@ class ModeloSesion {
             return $stmt->fetch();
         }
 
-        // $stmt->close();
-        //} $stmt = null;	
+
     }
     
 

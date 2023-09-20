@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 use App\Controllers\GeneroController;
 use App\Controllers\PosicionController;
 use App\Controllers\RegistroDeportistaController;
@@ -12,13 +9,8 @@ use App\Controllers\RegistroDeportistaController;
 
     $genero = GeneroController::listarGenero($item, $valor);
     $posicion = PosicionController::listarPosicion($item, $valor);
-     
 
 ?>
-
-
-
-
 
 
 <!DOCTYPE html>

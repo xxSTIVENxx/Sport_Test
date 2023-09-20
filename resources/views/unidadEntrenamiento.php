@@ -53,7 +53,7 @@ use App\Controllers\UnidadEntrenamientoController;
 
         ?>
 
-<div class="d-flex flex-column" id="content-wrapper">
+            <div class="d-flex flex-column" id="content-wrapper">
                 <div id="content">
                     <div class="container-fluid">
                         
@@ -177,7 +177,7 @@ use App\Controllers\UnidadEntrenamientoController;
                         </div>
                         <div class="mb-3"></div>
                     </div>
-                </div>
-
+                </div> 
+            </body>
         
 </html>

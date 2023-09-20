@@ -7,6 +7,8 @@ use PDO;
 
 class ModeloDeporte {
 
+    //MODELO PARA OBTENER EL DEPORTE
+
     public function obtenerDeportes() {
         $tabla = "deporte";
         

@@ -7,6 +7,7 @@ use PDO;
 
 class ModeloGenero {
 
+    //MODELO PARA OBTENER EL GENERO
     public function obtenerGenero() {
         $tabla = "genero";
         

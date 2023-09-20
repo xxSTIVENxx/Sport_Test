@@ -333,20 +333,20 @@ $posicion = PosicionController::listarPosicion();
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-<script>
-    $(document).ready(function () {
-        // Manejar el cierre de la vista modal al hacer clic en el botón "Cancelar" o en la "x"
-        $("#actualizarDeportistaModal").on("hidden.bs.modal", function () {
-            // Limpiar el valor del input oculto
-            $("#deportistaIdActualizar").val("");
-            // Restaurar el fondo a su estado normal
-            $("body").removeClass("modal-open");
-            $(".modal-backdrop").remove();
+    <script>
+        $(document).ready(function () {
+            // Manejar el cierre de la vista modal al hacer clic en el botón "Cancelar" o en la "x"
+            $("#actualizarDeportistaModal").on("hidden.bs.modal", function () {
+                // Limpiar el valor del input oculto
+                $("#deportistaIdActualizar").val("");
+                // Restaurar el fondo a su estado normal
+                $("body").removeClass("modal-open");
+                $(".modal-backdrop").remove();
+            });
         });
-    });
-</script>
+    </script>
 
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
 
 

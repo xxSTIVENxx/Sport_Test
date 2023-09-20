@@ -1,6 +1,6 @@
 <?php
 
-
+//traemos los datos de deportista para poder realizar los test
 use App\Controllers\TestCooperController;
 
 use App\Controllers\RegistroDeportistaController;
@@ -146,10 +146,6 @@ use App\Controllers\RegistroDeportistaController;
             </div>
             
             
-            
-
-
-
             <div class="card shadow">
                 <div class="card-header py-3">
                     <p class="m-0 fw-bold title-test">Registros Test Cooper</p>
@@ -197,7 +193,8 @@ use App\Controllers\RegistroDeportistaController;
 
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
    
-
+        
+        <!-- MODAL PARA CONFIRMAR ELIMINACION -->
         <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -220,7 +217,7 @@ use App\Controllers\RegistroDeportistaController;
             </div>
 
 
-            
+            <!-- MODAL DE ACTUALIZAR DATOS -->
             <div class="modal fade" id="actualizarTest30" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -284,11 +281,32 @@ use App\Controllers\RegistroDeportistaController;
         <script>
             $("#dataTable").DataTable();
 
+            //script permite capturar el id del registro seleccionado 
             $(".btneliminar").on("click",function(){
                 $("#eliminarDeportistaId").val($(this).data("id"));
                 $("#confirmDeleteModal").modal("show");
             })
 
+             //con este confirmamos la eliminacion del registro 
+            $("#confirmDeleteBtn").on("click",function(){
+                let id = $("#eliminarDeportistaId").val();
+                
+                $("#confirmDeleteModal").modal("hide");
+                $.ajax({
+                    type: "POST",
+                    url: "/inicioSesion/tests/testCooperD",
+                    data: { id },
+                    success: function (response) {
+                        window.location.reload();
+                    },
+                    error: function () {
+                        alert("Error de conexión");
+                    }
+                });
+            })
+
+
+            //Al darle al boton actualizar, captura los datos y los lleva a la vista modal
             $(".btnactualizar").on("click",function(){
                 var id = $(this).data("id");
                 var deportista = $(this).data("deportista");
@@ -311,23 +329,7 @@ use App\Controllers\RegistroDeportistaController;
 
             })
 
-            $("#confirmDeleteBtn").on("click",function(){
-                let id = $("#eliminarDeportistaId").val();
-                
-                $("#confirmDeleteModal").modal("hide");
-                $.ajax({
-                    type: "POST",
-                    url: "/inicioSesion/tests/testCooperD",
-                    data: { id },
-                    success: function (response) {
-                        window.location.reload();
-                    },
-                    error: function () {
-                        alert("Error de conexión");
-                    }
-                });
-            })
-
+            //permite actualizar los datos
             $("#guardarCambios").on("click",function(){
                 id = $("#id").val();
                 tiempo = $("#tiempo").val();
@@ -364,6 +366,11 @@ use App\Controllers\RegistroDeportistaController;
                 $("#edad").val(option.data("edad"));
             })
 
+
+             //Este código se activa cuando se selecciona una opción en un elemento de selección 
+            // el menú desplegable y actualiza los valores de dos campos de entrada
+            // ("registroGenero" y "registroEdad") en función de los datos asociados a la opción 
+             //seleccionada en este caso el nombre del deportista.
             $("#registroFkIdDeportista").on("change",function(){
                 let option = $(this).find('option:selected');
                 $("#registroGenero").val(option.data("genero"));
@@ -377,6 +384,7 @@ use App\Controllers\RegistroDeportistaController;
                     }
                 }
             })
+
             $("#tiempo").on("input",function(){
                
                 $("#estado").val( calcularResultado($("#sexo").val(),$("#edad").val(),$(this).val())) ;
@@ -390,6 +398,10 @@ use App\Controllers\RegistroDeportistaController;
                 
             })
 
+
+
+            //Este código permite que el usuario solo ingrese números, dos puntos (":") y puntos (".") 
+            //en ese campo y evita que se ingresen otros caracteres.
             $("#registroTiempoEnSegundos").on("keypress",function(e){
                 if(isNaN(String.fromCharCode(e.which))){
                     if(String.fromCharCode(e.which) != ":" && String.fromCharCode(e.which) != "." ){
@@ -398,7 +410,11 @@ use App\Controllers\RegistroDeportistaController;
                 }
             })
 
-            
+
+            //toma tres parámetros: sexo, edad, y distancia, y calcula el resultado de la condición 
+            //física de una persona en función de estos valores. La función utiliza dos tablas 
+            //(una para hombres y otra para mujeres) que contienen valores de referencia para 
+            //diferentes categorías de edad y distancias.
             function calcularResultado(sexo, edad, distancia) {
                 const tablaHombres = {
                     '13-19': [2100, 2200, 2500, 2750, 3000],

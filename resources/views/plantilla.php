@@ -15,9 +15,6 @@
     <link rel="stylesheet" href="/css/animate.min.css">
     <link rel="stylesheet" href="/css/aos.min.css">
     <link rel="stylesheet" href="/css/untitled.css">
-    
-    
-    
 </head>
 
 

@@ -10,6 +10,7 @@ use PDOException;
 class ModeloTestTreinta {
 
 
+    //MODELO PARA REGISTRAR EN EL TEST 
     static public function mdlRegistroTestTreintametros($tabla, $datos) {
         $vlrreturn = "ok";
         $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (tiempo_en_segundos, fecha_realizacion,estado, fk_id_deportista) VALUES (:tiempo, :fecha, :estado, :fk_id_deportista)");
@@ -41,7 +42,7 @@ class ModeloTestTreinta {
         return $vlrreturn;
     }
 
-    // MODELO MOSTRAR
+    // MODELO MOSTRAR O SELECCIONAR REGISTRO
 
     static public function mdlSeleccionarTestTreintametros($tabla= "test_treinta_metros", $item = null, $valor=null) {
         if ($item == null && $valor == null) {
@@ -55,7 +56,7 @@ class ModeloTestTreinta {
         }
     }
     
-    // ACTUALIZAR
+    //MODELO PARA ACTUALIZAR REGISTRO DEL TEST
 
     static public function mdlActualizarTestTreintametros($tabla, $datos) {
         $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET tiempo_en_segundos=:tiempo_en_segundos,fecha_realizacion=:fecha,estado=:estado,fk_id_deportista=:fk_id_deportista  WHERE id = :id");
@@ -73,6 +74,7 @@ class ModeloTestTreinta {
         $stmt->closeCursor();
     }
 
+    //MODELO PARA ELIMINAR REGISTRO DEL TEST
     static public function mdlEliminarTestTreintametros($tabla, $valor) {
         $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
     

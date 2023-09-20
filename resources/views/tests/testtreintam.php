@@ -190,6 +190,7 @@ use App\Controllers\RegistroDeportistaController;
             </div>
         </div>
 
+        <!-- MODAL PARA CONFIRMAR ELIMINACION DE REGISTRO -->
         <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -212,7 +213,7 @@ use App\Controllers\RegistroDeportistaController;
             </div>
 
 
-            
+            <!-- MODAL PARA ACTUALIZAR REGISTRO -->
             <div class="modal fade" id="actualizarTest30" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -264,17 +265,12 @@ use App\Controllers\RegistroDeportistaController;
 
 
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-   
-    
-    
 
-                <script src="/js/bootstrap.min.js"></script>
-                <script src="/js/aos.min.js"></script>
-                <script src="/js/bs-init.js"></script>
-                <script src="/js/theme.js"></script>
+            <script src="/js/bootstrap.min.js"></script>
+            <script src="/js/aos.min.js"></script>
+            <script src="/js/bs-init.js"></script>
+            <script src="/js/theme.js"></script>
 
-
-                
 
 
         </body>
@@ -282,11 +278,31 @@ use App\Controllers\RegistroDeportistaController;
     <script>
             $("#dataTable").DataTable();
 
+            //captura el id al darle al btn eliminar para llevarlo a la vista modal
             $(".btneliminar").on("click",function(){
                 $("#eliminarDeportistaId").val($(this).data("id"));
                 $("#confirmDeleteModal").modal("show");
             })
 
+            //trae el id del registros y al darle confirma eliminacion se eliminara el registro
+            $("#confirmDeleteBtn").on("click",function(){
+                let id = $("#eliminarDeportistaId").val();
+                
+                $("#confirmDeleteModal").modal("hide");
+                $.ajax({
+                    type: "POST",
+                    url: "/inicioSesion/test/test30mD",
+                    data: { id },
+                    success: function (response) {
+                        window.location.reload();
+                    },
+                    error: function () {
+                        alert("Error de conexión");
+                    }
+                });
+            })
+
+            //al darle al boton actualizar trae los datos que queremos mostrar en la vista modal 
             $(".btnactualizar").on("click",function(){
                 var id = $(this).data("id");
                 var deportista = $(this).data("deportista");
@@ -308,24 +324,7 @@ use App\Controllers\RegistroDeportistaController;
 
 
             })
-
-            $("#confirmDeleteBtn").on("click",function(){
-                let id = $("#eliminarDeportistaId").val();
-                
-                $("#confirmDeleteModal").modal("hide");
-                $.ajax({
-                    type: "POST",
-                    url: "/inicioSesion/test/test30mD",
-                    data: { id },
-                    success: function (response) {
-                        window.location.reload();
-                    },
-                    error: function () {
-                        alert("Error de conexión");
-                    }
-                });
-            })
-
+            //captura los datos y mandamos la actualizacion atraves del boton guardar cambios 
             $("#guardarCambios").on("click",function(){
                 id = $("#id").val();
                 tiempo = $("#tiempo").val();
@@ -356,17 +355,21 @@ use App\Controllers\RegistroDeportistaController;
                 });
             });
 
+
+
             $("#deportista").on("change",function(){
                 let option = $(this).find('option:selected');
                 $("#sexo").val(option.data("genero"));
                 $("#edad").val(option.data("edad"));
             })
 
+
             $("#registroFkIdDeportista").on("change",function(){
                 let option = $(this).find('option:selected');
                 $("#registroGenero").val(option.data("genero"));
                 $("#registroEdad").val(option.data("edad"));
             })
+
 
             $("#tiempo").on("keypress",function(e){
                 if(isNaN(String.fromCharCode(e.which))){
@@ -375,6 +378,8 @@ use App\Controllers\RegistroDeportistaController;
                     }
                 }
             })
+
+
             $("#tiempo").on("input",function(){
                 formatoValido = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9].[0-9]$/.test($(this).val());
                 if(!formatoValido){
@@ -388,6 +393,7 @@ use App\Controllers\RegistroDeportistaController;
                 }
             })
 
+
             $("#registroTiempoEnSegundos").on("input",function(){
                 formatoValido = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9].[0-9]$/.test($(this).val());
                 if(!formatoValido){
@@ -398,6 +404,8 @@ use App\Controllers\RegistroDeportistaController;
                     $("#registroEstado").val( calcularResultado($("#registroGenero").val(),$("#registroEdad").val(),convertirATiempoEnSegundos($(this).val()))) ;
                 }
             })
+
+
             $("#registroTiempoEnSegundos").on("keypress",function(e){
                 if(isNaN(String.fromCharCode(e.which))){
                     if(String.fromCharCode(e.which) != ":" && String.fromCharCode(e.which) != "." ){
@@ -406,9 +414,17 @@ use App\Controllers\RegistroDeportistaController;
                 }
             })
 
+
+            // calcula el resultado de la condición física de una persona en función de su sexo,
+            // edad y tiempo en segundos. La función toma tres parámetros: sexo, edad, y tiempo.
             function calcularResultado(sexo, edad, tiempo) {
+                 //La función comienza con una serie de declaraciones if y else que evalúan el sexo, 
+                //la edad y el tiempo proporcionados como parámetros
                 if (sexo == "1") { // Hombre
                     if (edad >= 16 && edad <= 24) {
+                        // se evalúa el tiempo proporcionado en segundos. 
+                        //Dependiendo del sexo, la edad y el tiempo, se devuelve una descripción 
+                        //de la condición física de la persona
                         if (tiempo < 3.5) {
                             return "Excelente";
                         } else if (tiempo >= 3.5 && tiempo < 3.9) {
@@ -491,6 +507,8 @@ use App\Controllers\RegistroDeportistaController;
                     return "Sexo no válido";
                 }
             }
+            
+            //toma una cadena de tiempo en formato "hh:mm:ss" y la convierte en una cantidad total de segundos. 
             function convertirATiempoEnSegundos(tiempo) {
                 const partes = tiempo.split(":"); // Dividimos el tiempo en partes
 

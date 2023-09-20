@@ -10,7 +10,7 @@ use PDOException;
 class ModeloTestCooper {
 
 
-    // MODELO CREAR 
+    // MODELO CREAR REGISTRO EN EL TEST
 
     static public function mdlRegisTestCooper($tabla, $datos) {
     
@@ -37,7 +37,7 @@ class ModeloTestCooper {
     
     }
 
-    // MODELO MOSTRAR
+    // MODELO MOSTRAR O SELECCIONAR REGISTROS DEL TEST
 
     static public function mdlSeleccionarTestCooper($tabla = "test_cooper", $item, $valor) {
  
@@ -52,7 +52,7 @@ class ModeloTestCooper {
         }	
     }
     
-    //  actualizar
+    //MODELO  ACTUALIZAR REGISTROS DEL TEST
 
     static public function mdlActualizarTestCooper($tabla, $datos) {
         
@@ -75,6 +75,7 @@ class ModeloTestCooper {
         	
     }
 
+    //MODELO ELIMINAR REGISTROS DEL TEST
     static public function mdlEliminarTestCooper($tabla, $valor) {
 	
         $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");

@@ -11,7 +11,7 @@ class ModeloRegistroDeportista
     static public function mdlRegisDeportista($tabla, $datos)
     {
         try {
-            // Prepara la statement SQL
+            // PREPARA LA DECLARACION SQL
             $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre, apellido, edad, telefono, correo, fk_id_genero, fk_id_posicion, direccion, foto) 
             VALUES (:nombre, :apellido, :edad, :telefono, :correo, :fk_id_genero, :fk_id_posicion, :direccion, :foto)");
 
@@ -26,23 +26,23 @@ class ModeloRegistroDeportista
             $stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
             $stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
 
-            // Execute the statement
+            // EJECUTA LA DECLARACION SQL
             if ($stmt->execute()) {
-                return "ok"; // Return success message
+                return "ok"; // RETORNA UN MENSAJE 
             } else {
-                return "error"; // Return error message
+                return "error"; //RETORNA UN MENSAJE DE ERROR
             }
         } catch (PDOException $e) {
-            return "Error: " . $e->getMessage(); // Return error message with exception details
+            return "Error: " . $e->getMessage(); // 
         } finally {
-            // Close the statement
+            // CIERRA LA DECLARACION 
             $stmt->closeCursor();
         }
     }
 
 
 
-    // MODELO MOSTRAR
+    // MODELO MOSTRAR O SELECCIONAR 
     static public function mdlSeleccionarDeportista($tabla, $item, $valor)
     {
         $stmt = null; // Initialize $stmt as null
@@ -59,7 +59,6 @@ class ModeloRegistroDeportista
             return $stmt->fetch();
         }
 
-        // Only close and set to null if $stmt is not null
         if ($stmt !== null) {
             $stmt->close();
         }
@@ -69,7 +68,7 @@ class ModeloRegistroDeportista
 
     
     
-    // funcion actualizar
+    //MODELO ACTUALIZAR 
 
     static public function mdlActualizarDeportista($tabla, $datos){
         
@@ -100,6 +99,7 @@ class ModeloRegistroDeportista
 
     }
 
+    //MODELO PARA ELIMINAR CADA REGISTRO
 
     static public function mdlEliminarDeportista($tabla, $valor){
 	

@@ -319,11 +319,6 @@ if(isset($_GET["id_unidad"])){
 
 
 
-
-
-
-
-
         // Manejar clic en el botón "Eliminar"
         // Manejar clic en el botón "Eliminar" de la tabla
             $(".btn-eliminar").on("click", function () {
@@ -350,38 +345,38 @@ if(isset($_GET["id_unidad"])){
 
 
     // Manejar el cierre de la vista modal al hacer clic en el botón "Cancelar" o en la "x"
-$("#eliminarModal").on("hidden.bs.modal", function () {
-    // Limpiar el valor del input oculto
-    $("#eliminarUnidadId").val("");
-    // Restaurar el fondo a su estado normal
-    $("body").removeClass("modal-open");
-    $(".modal-backdrop").remove();
-});
+        $("#eliminarModal").on("hidden.bs.modal", function () {
+            // Limpiar el valor del input oculto
+            $("#eliminarUnidadId").val("");
+            // Restaurar el fondo a su estado normal
+            $("body").removeClass("modal-open");
+            $(".modal-backdrop").remove();
+        });
 
-// Capturar clic fuera de la vista modal para cerrarla
-$(document).on("click", function (e) {
-    if ($(e.target).hasClass("modal")) {
-        $("#eliminarModal").modal("hide");
-    }
-});
+        // Capturar clic fuera de la vista modal para cerrarla
+        $(document).on("click", function (e) {
+            if ($(e.target).hasClass("modal")) {
+                $("#eliminarModal").modal("hide");
+            }
+        });
 
 
-    // Manejar clic en el botón "Confirmar Eliminación"
-    $("#confirmDeleteBtn").on("click", function () {
-    var unidadId = $("#eliminarUnidadId").val();
-    $("#eliminarModal").modal("hide");
-    $.ajax({
-        type: "POST",
-        url: "/inicioSesion/unidadEntrenamiento/registrosUnidadD",
-        data: { eliminarRegistroUnidad: unidadId },
-        success: function (response) {
-            window.location.reload();
-        },
-        error: function () {
-            alert("Error de conexión");
-        }
-    });
-});
+            // Manejar clic en el botón "Confirmar Eliminación"
+            $("#confirmDeleteBtn").on("click", function () {
+            var unidadId = $("#eliminarUnidadId").val();
+            $("#eliminarModal").modal("hide");
+            $.ajax({
+                type: "POST",
+                url: "/inicioSesion/unidadEntrenamiento/registrosUnidadD",
+                data: { eliminarRegistroUnidad: unidadId },
+                success: function (response) {
+                    window.location.reload();
+                },
+                error: function () {
+                    alert("Error de conexión");
+                }
+            });
+        });
  
 
 //---------------------------------------------------------
@@ -396,98 +391,98 @@ $(document).on("click", function (e) {
 
         // Manejar clic en el botón "Guardar Cambios"
        $("#guardarCambiosBtn").on("click", function () {
-    // Obtener el valor del campo oculto unidadIdActualizar
-    var unidadId = $("#unidadIdActualizar").val();
+        // Obtener el valor del campo oculto unidadIdActualizar
+        var unidadId = $("#unidadIdActualizar").val();
 
-    // Obtener los valores de los campos del formulario de actualización
-    var unidad = $("#unidadActualizada").val();
-    var fechaHora = $("#fechaHoraActualizada").val();
-    var lugar = $("#lugarActualizado").val();
-    var etapa = $("#etapaActualizada").val();
-    var metodo = $("#metodoActualizado").val();
-    var contenido = $("#contenidoActualizado").val();
-    var re_dato = $("#REActualizado").val();
-    var tareas = $("#tareasActualizado").val();
-    var objetivo = $("#objetivoActualizado").val();
-    var faseInicial = $("#faseInicialActualizada").val();
-    var faseCentral = $("#faseCentralActualizada").val();
-    var faseFinal = $("#faseFinalActualizada").val();
+        // Obtener los valores de los campos del formulario de actualización
+        var unidad = $("#unidadActualizada").val();
+        var fechaHora = $("#fechaHoraActualizada").val();
+        var lugar = $("#lugarActualizado").val();
+        var etapa = $("#etapaActualizada").val();
+        var metodo = $("#metodoActualizado").val();
+        var contenido = $("#contenidoActualizado").val();
+        var re_dato = $("#REActualizado").val();
+        var tareas = $("#tareasActualizado").val();
+        var objetivo = $("#objetivoActualizado").val();
+        var faseInicial = $("#faseInicialActualizada").val();
+        var faseCentral = $("#faseCentralActualizada").val();
+        var faseFinal = $("#faseFinalActualizada").val();
 
-    // Realizar una solicitud AJAX para enviar los datos actualizados al servidor
-    $.ajax({
-        type: "POST",
-        url: "/inicioSesion/unidadEntrenamiento/actualizarUnidad", // Reemplaza con la URL correcta para actualizar la unidad
-        data: {
-            unidadId: unidadId, // Enviar el ID de la unidad a actualizar
-            unidad: unidad,
-            fechaHora: fechaHora,
-            lugar: lugar,
-            etapa: etapa,
-            metodo: metodo,
-            contenido: contenido,
-            re_dato: re_dato,
-            tareas: tareas,
-            objetivos: objetivo,
-            faseInicial: faseInicial,
-            faseCentral: faseCentral,
-            faseFinal: faseFinal
-            // Agrega otros campos aquí si es necesario
-        },
-        success: function (response) {
-            // Manejar la respuesta del servidor, por ejemplo, mostrar un mensaje de éxito
-            
-             window.location.reload(); // Recargar la página o realizar otras acciones necesarias
-            
-        },
-        error: function () {
-            alert("Error de conexión");
-        }
+        // Realizar una solicitud AJAX para enviar los datos actualizados al servidor
+        $.ajax({
+            type: "POST",
+            url: "/inicioSesion/unidadEntrenamiento/actualizarUnidad", // Reemplaza con la URL correcta para actualizar la unidad
+            data: {
+                unidadId: unidadId, // Enviar el ID de la unidad a actualizar
+                unidad: unidad,
+                fechaHora: fechaHora,
+                lugar: lugar,
+                etapa: etapa,
+                metodo: metodo,
+                contenido: contenido,
+                re_dato: re_dato,
+                tareas: tareas,
+                objetivos: objetivo,
+                faseInicial: faseInicial,
+                faseCentral: faseCentral,
+                faseFinal: faseFinal
+                // Agrega otros campos aquí si es necesario
+            },
+            success: function (response) {
+                // Manejar la respuesta del servidor, por ejemplo, mostrar un mensaje de éxito
+                
+                window.location.reload(); // Recargar la página o realizar otras acciones necesarias
+                
+            },
+            error: function () {
+                alert("Error de conexión");
+            }
+        });
     });
-});
 
 
 
 
-    });
+        });
 
     
 
 
-    $(".btn-actualizar").on("click", function () {
-    var unidadId = $(this).data("id");
-    var unidad = $(this).data("unidad");
-    var fechaHora = $(this).data("fecha_hora");
-    var lugar = $(this).data("lugar");
-    var etapa = $(this).data("etapa");
-    var metodo = $(this).data("metodo");
-    var contenido = $(this).data("contenido");
-    var re_dato = $(this).data("re_dato");
-    var tareas = $(this).data("tareas");
-    var objetivo = $(this).data("objetivos");
-    var faseInicial = $(this).data("fase-inicial");
-    var faseCentral = $(this).data("fase-central");
-    var faseFinal = $(this).data("fase-final");
+            $(".btn-actualizar").on("click", function () {
+            var unidadId = $(this).data("id");
+            var unidad = $(this).data("unidad");
+            var fechaHora = $(this).data("fecha_hora");
+            var lugar = $(this).data("lugar");
+            var etapa = $(this).data("etapa");
+            var metodo = $(this).data("metodo");
+            var contenido = $(this).data("contenido");
+            var re_dato = $(this).data("re_dato");
+            var tareas = $(this).data("tareas");
+            var objetivo = $(this).data("objetivos");
+            var faseInicial = $(this).data("fase-inicial");
+            var faseCentral = $(this).data("fase-central");
+            var faseFinal = $(this).data("fase-final");
 
-    // Configura el campo oculto con el valor de unidadId
-    $("#unidadIdActualizar").val(unidadId);
+            // Configura el campo oculto con el valor de unidadId
+            $("#unidadIdActualizar").val(unidadId);
 
-    // Llenar los campos del formulario con los datos de la unidad seleccionada
-    $("#unidadActualizada").val(unidad);
-    $("#fechaHoraActualizada").val(fechaHora);
-    $("#lugarActualizado").val(lugar);
-    $("#etapaActualizada").val(etapa);
-    $("#metodoActualizado").val(metodo);
-    $("#contenidoActualizado").val(contenido);
-    $("#REActualizado").val(re_dato);
-    $("#tareasActualizado").val(tareas);
-    $("#objetivoActualizado").val(objetivo);
-    $("#faseInicialActualizada").val(faseInicial);
-    $("#faseCentralActualizada").val(faseCentral);
-    $("#faseFinalActualizada").val(faseFinal);
+            // Llenar los campos del formulario con los datos de la unidad seleccionada
+            $("#unidadActualizada").val(unidad);
+            $("#fechaHoraActualizada").val(fechaHora);
+            $("#lugarActualizado").val(lugar);
+            $("#etapaActualizada").val(etapa);
+            $("#metodoActualizado").val(metodo);
+            $("#contenidoActualizado").val(contenido);
+            $("#REActualizado").val(re_dato);
+            $("#tareasActualizado").val(tareas);
+            $("#objetivoActualizado").val(objetivo);
+            $("#faseInicialActualizada").val(faseInicial);
+            $("#faseCentralActualizada").val(faseCentral);
+            $("#faseFinalActualizada").val(faseFinal);
 
-    // Mostrar la vista modal de actualización
-    $("#actualizarModal").modal("show");
-});
+            // Mostrar la vista modal de actualización
+            $("#actualizarModal").modal("show");
+        });
 </script>
 
 
