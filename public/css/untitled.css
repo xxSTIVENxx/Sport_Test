@@ -1,0 +1,214 @@
+.contenidoPrincipal {
+  /*background: #8bd35e;*/
+  /*background-image: url(../../assets/img/rm222-mind-32.jpg);*/
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  height: 100%;
+}
+
+.titulotest {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.imgtest {
+  height: 128.3px;
+  width: auto;
+}
+
+.cardinfotest {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 25.2px;
+  color: #222831;
+}
+
+.btntest {
+  border-radius: 15px;
+}
+
+.btntest {
+  border-radius: 15px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.border-start-primary.cardtest {
+  border-radius: 15.6px;
+}
+
+.btnvermas {
+  border-radius: 15px;
+}
+
+.descripcion {
+  height: 150px;
+  resize: none;
+}
+
+.btnRegistrarDe {
+  margin-top: 10px;
+}
+
+.background {
+  background-image: url("../../assets/img/11264.jpg");
+}
+
+.inputImg {
+  border-radius: 8.6px;
+}
+
+
+.icon {
+  margin-top: 20%;
+}
+
+@media (max-width: 992px) {
+  .btntest {
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 992px) {
+  .icon {
+    margin-top: 5%;
+  }
+}
+
+@media (max-width: 992px) {
+  
+}
+
+@media (min-width: 992px) {
+  .btntest {
+    margin-right: 5px;
+  }
+}
+
+
+
+
+.btnverregistro {
+  background: #8bd35e;
+  margin-top: 10px;
+  color: white;
+}
+
+.btnverregistro:hover {
+  background: #689e46;
+  margin-top: 10px;
+  color: white;
+}
+
+
+.btnguardar {
+  margin-right: 10px;
+  margin-top: 10px;
+  background: #8bd35e;
+  color: white;
+}
+
+.btnguardar:hover {
+  background: #689e46;
+  color: white;
+  
+}
+
+
+
+.btnactualizar {
+  margin-right: 5px;
+  background: #8bd35e;
+  color: white;
+}
+
+.btnactualizar:hover {
+  background: #689e46;
+  color: white;
+  
+}
+
+
+.btneliminar {
+  --bs-danger: #e74a3b ;
+  --bs-danger-rgb: 231,74,59;
+}
+
+@media (max-width: 992px) {
+  .btneliminar {
+    margin-top: 5px;
+  }
+}
+
+.sidebar.sidebar-dark.accordion {
+  background: #393E46;
+}
+
+
+.btntest {
+  background: #7BC74D;
+  /*width: 70px;*/
+  font-size: medium;
+  color: white;
+}
+
+.btntest:hover {
+  background: #689e46;
+  color: white;
+  
+}
+
+
+
+
+
+.photo {
+  background: #8bd35e;
+  color: white;
+}
+
+.foto:hover {
+  background: #689e46;
+  color: white;
+  
+}
+
+
+a {
+  text-decoration: none;
+}
+
+
+/* Aplica la animación al elemento en hover */
+.elemento {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Aplica la animación al elemento en hover */
+.elemento:hover {
+  animation: pulse 1s ;
+}
+
+/* Hace que la animación también funcione en dispositivos móviles */
+.elemento:active {
+  animation: pulse 1s;
+}
+
+/* Estilo base para el enlace */
+.etiqueta {
+  color: var(--bs-gray-dark);
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+/* Aplica la animación de traslación en hover */
+.etiqueta:hover {
+  transform: translateY(-5px); /* Desplaza el enlace hacia arriba cuando el mouse pasa por encima */
+}
+
+
+

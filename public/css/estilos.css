@@ -1,0 +1,138 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-image: url(../img/logoSportTest.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+main {
+  width: 100%;
+  padding: 20px;
+  margin: auto;
+}
+
+.contenedor__todo {
+  width: 100%;
+  max-width: 380px;
+  margin: auto;
+  background: #fff; /* Fondo blanco */
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  text-align: center;
+}
+
+.contenedor__login-register form {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.contenedor__login-register form h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.contenedor__login-register form input {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  border: none;
+  background: #F2F2F2;
+  font-size: 16px;
+  outline: none;
+  border-radius: 15px;
+}
+
+/* Estilo para el botón de "Entrar" y el enlace "Registrarse" */
+.formulario__login button,
+.btn__registrarse {
+  display: inline-block;
+  width: calc(50% - 10px); /* 50% del ancho con un pequeño espacio entre ambos */
+  padding: 10px 20px; /* Padding reducido */
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 15px;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 16px; /* Tamaño de fuente reducido */
+  transition: background-color 0.3s, color 0.3s;
+  box-sizing: border-box; /* Incluye el espacio del padding en el ancho */
+}
+
+.formulario__login button:hover,
+.btn__registrarse:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Media Query para pantallas más pequeñas */
+@media screen and (max-width: 768px) {
+  .formulario__login button,
+  .btn__registrarse {
+      width: 100%; /* Ocupar todo el ancho en pantallas pequeñas */
+      margin-top: 10px; /* Espacio adicional entre botón y enlace */
+  }
+}
+
+
+/* Estilo para el formulario de registro */
+.formulario__register {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.formulario__register h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.formulario__register input {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  border: none;
+  background: #F2F2F2;
+  font-size: 16px;
+  outline: none;
+  border-radius: 15px;
+}
+
+/* Estilo para los selectores */
+.formulario__register .contenedorSelect {
+  text-align: left; /* Alineación izquierda para las etiquetas */
+  margin-top: 20px; /* Espacio entre selectores */
+}
+
+.formulario__register .contenedorSelect label {
+  font-weight: bold;
+}
+
+.formulario__register .contenedorSelect select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 14px;
+}
+
+
