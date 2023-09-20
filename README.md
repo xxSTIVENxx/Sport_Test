@@ -71,7 +71,7 @@ Esto mapeará el dominio `sporttest.test` a tu máquina local.
 	ServerName sporttest.test
 	</VirtualHost>
 	
-	Asegúrate de que `"C:/xampp/htdocs/sport/public"` coincida con la ruta de tu proyecto Sport Test en tu sistema.
+	Asegúrate de que `"C:/xampp/htdocs/sporttest/public"` coincida con la ruta de tu proyecto Sport Test en tu sistema.
 
 - Guarda el archivo `httpd-vhosts.conf` y ciérralo.
 
